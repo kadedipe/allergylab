@@ -8,6 +8,11 @@ services:
       depends_on:
         - dbhost
         - redis-server
+      environment:
+        FOLDER_PATH: /mnt/watchfolder/
+        DB_NAME: allergen_info
+        DB_USER: pythonapp 
+        DB_PASS: secretPass123!
     redis-server:
       image: redis
     email:
@@ -17,14 +22,17 @@ services:
       depends_on:
         - redis-server
       environment:
-        TO_ADDRESS: <your Quantic email>
-        FROM_ADDRESS: <new Gmail email>
-        FROM_PASSWORD: <Gmail app password>
+        TO_ADDRESS: ka82@students.quantic.edu
+        FROM_ADDRESS: adedipebabatundekolapo@gmail.com
+        FROM_PASSWORD: rjzmditczxpuzdrj
     db-loader:
       build: db-loader/.
       volumes: 
-        - <Enter Here>allergy-lab-watchfolder:/mnt/watchfolder/
+        - C:/Users/user/Desktop/allergy-lab-watchfolder:/mnt/watchfolder/
       environment:
         FOLDER_PATH: /mnt/watchfolder/
+        DB_NAME: allergen_info
+        DB_USER: pythonapp 
+        DB_PASS: secretPass123!
       depends_on:
         - dbhost
