@@ -4,10 +4,11 @@ import os
 db_name = os.environ['DB_NAME']
 db_user = os.environ['DB_USER']
 db_pass = os.environ['DB_PASS']
+db_host = os.environ['DB_HOST']
 
 def connection():
     # Edited out actual values
-    conn = mysql.connector.connect( host='dbhost',
+    conn = mysql.connector.connect( host=db_host,
                             port=3306,
                             database=db_name,
                             user=db_user,
